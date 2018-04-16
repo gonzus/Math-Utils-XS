@@ -61,6 +61,18 @@ PROTOTYPES: DISABLE
 #################################################################
 
 double
+log10(double n)
+  CODE:
+    RETVAL = log10(n);
+  OUTPUT: RETVAL
+
+double
+log2(double n)
+  CODE:
+    RETVAL = log2(n);
+  OUTPUT: RETVAL
+
+double
 fsum(...)
   PREINIT:
     double sum = 0.0;

@@ -9,9 +9,13 @@ use parent 'Exporter';
 our $VERSION = '0.000001';
 XSLoader::load( __PACKAGE__, $VERSION );
 
-our @EXPORT_OK = qw[
-    fsum
-];
+our %EXPORT_TAGS = (
+    utility => [ qw(log10 log2 fsum) ],
+);
+
+our @EXPORT_OK = (
+    @{ $EXPORT_TAGS{utility} },
+);
 
 1;
 
