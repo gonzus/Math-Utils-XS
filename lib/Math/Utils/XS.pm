@@ -31,7 +31,7 @@ __END__
 
 =head1 NAME
 
-Math::Utils::XS - Gonzo rules
+Math::Utils::XS - Some math utility functions implemented in XS
 
 =head1 VERSION
 
@@ -39,9 +39,55 @@ Version 0.000001
 
 =head1 SYNOPSIS
 
+    use Math::Utils::XS q(utility);
+
+    my $l10 = log10(100);              # returns 2
+    my $l2 = log2(32);                 # returns 5
+    my $sum = fsum(1, 1e50, 1, -1e50); # returns 2
+
+    my $sign = sign(-22);              # returns -1
+    my $sign = sign(3 - 3);            # returns  0
+    my $sign = sign(+22);              # returns +1
+
+    my $f = floor(22/7);               # returns 3
+    my $f = floor(2.7182);             # returns 2
+
+    my $c = floor(-22/7);              # returns -4
+    my $c = floor(-2.7182);            # returns -3
+
 =head1 DESCRIPTION
 
-=head1 METHODS/ATTRIBUTES
+=head1 FUNCTIONS
+
+=head2 log10
+
+Compute a number's logarithm in base 10.
+
+=head2 log2
+
+Compute a number's logarithm in base 2.
+
+=head2 sign
+
+Return -1, 0 or +1 depending on whether a number is negative, zero or positive.
+
+=head2 floor
+
+Compute the largest integer that is less than or equal than a number.
+
+=head2 ceil
+
+Compute the smallest integer that is greater than or equal than a number.
+
+=head2 fsum
+
+Compute the sum of all arguments.  It will process each separate argument, and
+recurse into any arrays (but not hashes) all the way inside.
+
+The sum is computed in a way that you can safely add floating point numbers,
+even if their magnitudes are very different.  This is done using Neumaier's
+modification of Kahan's summation algorith, described here:
+C<https://en.wikipedia.org/wiki/Kahan_summation_algorithm>.
 
 =head1 SEE ALSO
 
