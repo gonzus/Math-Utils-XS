@@ -72,6 +72,28 @@ log2(double n)
     RETVAL = log2(n);
   OUTPUT: RETVAL
 
+int
+sign(double n)
+  CODE:
+    RETVAL = n < 0 ? -1
+           : n > 0 ? +1
+           : 0;
+  OUTPUT: RETVAL
+
+long
+floor(double n)
+  CODE:
+    long x = (long) n;
+    RETVAL = (n <= 0 && x != n) ? (long)(n - 1) : x;
+  OUTPUT: RETVAL
+
+long
+ceil(double n)
+  CODE:
+    long x = (long) n;
+    RETVAL = (n >= 0 && x != n) ? (long)(n + 1) : x;
+  OUTPUT: RETVAL
+
 double
 fsum(...)
   PREINIT:

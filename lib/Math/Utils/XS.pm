@@ -10,7 +10,11 @@ our $VERSION = '0.000001';
 XSLoader::load( __PACKAGE__, $VERSION );
 
 our %EXPORT_TAGS = (
-    utility => [ qw(log10 log2 fsum) ],
+    utility => [qw(
+        log10 log2
+        fsum
+        sign floor ceil
+    )],
 );
 
 our @EXPORT_OK = (
