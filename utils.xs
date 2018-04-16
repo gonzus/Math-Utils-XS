@@ -37,13 +37,6 @@ static int sum_value(pTHX_ double* sum, double* correction, SV* value)
         return 0;
     } while (0);
 
-#if 0
-    if (term == 0.0) {
-        fprintf(stderr, "ZERO\n");
-        return 1;
-    }
-#endif
-
     double new_sum = *sum + term;
     if (fabs(*sum) >= fabs(term)) {
         *correction += (*sum - new_sum) + term;

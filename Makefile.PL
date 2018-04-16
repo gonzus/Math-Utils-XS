@@ -26,8 +26,8 @@ WriteMakefile(
         resources   => {
             repository => {
                 type => 'git',
-                url  => 'git@github.com:gonzus/NONE',
-                web  => 'https://github.com/gonzus/NONE',
+                url  => 'git@github.com:gonzus/Math-Utils-XS',
+                web  => 'https://github.com/gonzus/Math-Utils-XS',
             },
         },
     },
