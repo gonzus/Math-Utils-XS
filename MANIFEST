@@ -8,4 +8,6 @@ MANIFEST.SKIP
 Makefile.PL
 ppport.h
 README.md
-t/00_basic.t
+t/00_fsum.t
+t/01_logs.t
+t/02_signs.t

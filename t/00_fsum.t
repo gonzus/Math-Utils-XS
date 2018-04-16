@@ -4,12 +4,12 @@ use warnings;
 use Data::Dumper;
 use Test::More;
 use JSON::XS;
-use Math::Utils::XS qw/ fsum /;
+use Math::Utils::XS q(:utility);
 
 sub test_sum {
     my @cases = (
         [ [1.0, 2, 3.0], 6 ],
-        [ [1.0, [ 2, 3 , 4]], 10 ],
+        [ [1.0, [ 2, 3], 4], 10 ],
         [ [1, 0, 2, 0.0, [0, 3, 0.0]], 6 ],
         [ [10000.0, 3.14159, 2.71828], 10005.85987],
         [ [1, 1e50, 1, -1e50], 2 ],

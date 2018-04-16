@@ -11,12 +11,10 @@ static int sum_value(pTHX_ double* sum, double* correction, SV* value)
     do {
         if (SvIOK(value)) {
             term = SvIV(value);
-            /* fprintf(stderr, "INT %.0f\n", term); */
             break;
         }
         if (SvNOK(value)) {
             term = SvNV(value);
-            /* fprintf(stderr, "DOUBLE %f\n", term); */
             break;
         }
         if (SvROK(value)) {
@@ -24,7 +22,6 @@ static int sum_value(pTHX_ double* sum, double* correction, SV* value)
             if (SvTYPE(ref) == SVt_PVAV) {
                 AV* data = (AV*) ref;
                 int top = av_top_index(data) + 1;
-                /* fprintf(stderr, "ARRAY %d\n", top); */
                 for (int j = 0; j < top; ++j) {
                     SV** elem = av_fetch(data, j, 0);
                     if (!elem || !*elem) {
@@ -33,7 +30,10 @@ static int sum_value(pTHX_ double* sum, double* correction, SV* value)
                     sum_value(aTHX_ sum, correction, *elem);
                 }
             }
+            break;
         }
+
+        croak("Cannot handle parameter");
         return 0;
     } while (0);
 

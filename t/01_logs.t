@@ -4,7 +4,6 @@ use warnings;
 use Data::Dumper;
 use Test::More;
 use Test::Number::Delta within => 1e-9;
-use JSON::XS;
 use Math::Utils::XS qw/ log2 log10 /;
 
 sub test_log10 {
