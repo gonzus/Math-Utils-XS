@@ -1,0 +1,11 @@
+.gitignore
+Changes
+utils.xs
+lib/Math/Utils/XS.pm
+LICENSE
+MANIFEST
+MANIFEST.SKIP
+Makefile.PL
+ppport.h
+README.md
+t/00_basic.t
