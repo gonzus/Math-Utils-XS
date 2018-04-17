@@ -4,6 +4,8 @@
 #include "XSUB.h"
 #include "ppport.h"
 
+#include <math.h>
+
 static int sum_value(pTHX_ double* sum, double* correction, SV* value)
 {
     double term = 0.0;
@@ -67,30 +69,24 @@ log2(double n)
     RETVAL = log2(n);
   OUTPUT: RETVAL
 
+double
+floor(double n)
+  CODE:
+    RETVAL = floor(n);
+  OUTPUT: RETVAL
+
+double
+ceil(double n)
+  CODE:
+    RETVAL = ceil(n);
+  OUTPUT: RETVAL
+
 int
 sign(double n)
   CODE:
     RETVAL = n < 0 ? -1
            : n > 0 ? +1
            : 0;
-  OUTPUT: RETVAL
-
-long
-floor(double n)
-  PREINIT:
-    long x = 0;
-  CODE:
-    x = (long) n;
-    RETVAL = (n <= 0 && x != n) ? (long)(n - 1) : x;
-  OUTPUT: RETVAL
-
-long
-ceil(double n)
-  PREINIT:
-    long x = 0;
-  CODE:
-    x = (long) n;
-    RETVAL = (n >= 0 && x != n) ? (long)(n + 1) : x;
   OUTPUT: RETVAL
 
 double
