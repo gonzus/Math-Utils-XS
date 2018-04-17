@@ -11,3 +11,4 @@ README.md
 t/00_fsum.t
 t/01_logs.t
 t/02_signs.t
+tools/bench.pl
