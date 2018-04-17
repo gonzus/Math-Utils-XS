@@ -3,6 +3,7 @@ use warnings;
 
 use Data::Dumper;
 use Test::More;
+use Test::Number::Delta within => 1e-9;
 use JSON::XS;
 use Math::Utils::XS q(:utility);
 
@@ -25,7 +26,7 @@ sub test_sum {
         is($sum, $expected, "sum of $args_xs (arrayref) adds up to $expected");
 
         $sum = fsum(@$args);
-        is($sum, $expected, "sum of $args_xs (expanded) adds up to $expected");
+        delta_ok($sum, $expected, "sum of $args_xs (expanded) adds up to $expected");
         next;
 
         my $foo = 0.0;
@@ -34,7 +35,7 @@ sub test_sum {
         }
         my $got = int(($sum + 0.05) * 100.0) / 100.0;
         my $exp = int(($foo + 0.05) * 100.0) / 100.0;
-        is($got, $exp, "$got == $exp");
+        delta_ok($got, $exp, "$got == $exp");
     }
 }
 
