@@ -7,6 +7,7 @@
 static int sum_value(pTHX_ double* sum, double* correction, SV* value)
 {
     double term = 0.0;
+    double new_sum = 0.0;
 
     do {
         if (SvIOK(value)) {
@@ -20,9 +21,10 @@ static int sum_value(pTHX_ double* sum, double* correction, SV* value)
         if (SvROK(value)) {
             SV* ref = SvRV(value);
             if (SvTYPE(ref) == SVt_PVAV) {
+                int j = 0;
                 AV* data = (AV*) ref;
                 int top = av_top_index(data) + 1;
-                for (int j = 0; j < top; ++j) {
+                for (j = 0; j < top; ++j) {
                     SV** elem = av_fetch(data, j, 0);
                     if (!elem || !*elem) {
                         break; // could not get element
@@ -37,7 +39,7 @@ static int sum_value(pTHX_ double* sum, double* correction, SV* value)
         return 0;
     } while (0);
 
-    double new_sum = *sum + term;
+    new_sum = *sum + term;
     if (fabs(*sum) >= fabs(term)) {
         *correction += (*sum - new_sum) + term;
     }
@@ -75,15 +77,19 @@ sign(double n)
 
 long
 floor(double n)
+  PREINIT:
+    long x = 0;
   CODE:
-    long x = (long) n;
+    x = (long) n;
     RETVAL = (n <= 0 && x != n) ? (long)(n - 1) : x;
   OUTPUT: RETVAL
 
 long
 ceil(double n)
+  PREINIT:
+    long x = 0;
   CODE:
-    long x = (long) n;
+    x = (long) n;
     RETVAL = (n >= 0 && x != n) ? (long)(n + 1) : x;
   OUTPUT: RETVAL
 
@@ -92,8 +98,9 @@ fsum(...)
   PREINIT:
     double sum = 0.0;
     double correction = 0.0;
+    int j = 0;
   CODE:
-    for (int j = 0; j < items; ++j) {
+    for (j = 0; j < items; ++j) {
         sum_value(aTHX_ &sum, &correction, ST(j));
     }
     RETVAL = sum + correction;
