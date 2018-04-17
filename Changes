@@ -1,5 +1,9 @@
+0.000003    2018-04-17
+            * Fix comparisons in tests to account for floating point rounding
+              errors.
+
 0.000002    2018-04-16
-            * Update test dependencies
+            * Update test dependencies.
 
 0.000001    2018-04-16
             * Initial release.
