@@ -55,29 +55,30 @@ Version 0.000003
     my $c = floor(-22/7);              # returns -4
     my $c = floor(-2.7182);            # returns -3
 
-=head1 DESCRIPTION
-
 =head1 FUNCTIONS
 
-=head2 log10
+Note: functions marked with a (*) simply expose the corresponding function from
+the C library.
+
+=head2 log10 (*)
 
 Compute a number's logarithm in base 10.
 
-=head2 log2
+=head2 log2 (*)
 
 Compute a number's logarithm in base 2.
+
+=head2 floor (*)
+
+Compute the largest integer that is less than or equal than a number.
+
+=head2 ceil (*)
+
+Compute the smallest integer that is greater than or equal than a number.
 
 =head2 sign
 
 Return -1, 0 or +1 depending on whether a number is negative, zero or positive.
-
-=head2 floor
-
-Compute the largest integer that is less than or equal than a number.
-
-=head2 ceil
-
-Compute the smallest integer that is greater than or equal than a number.
 
 =head2 fsum
 
@@ -87,7 +88,7 @@ recurse into any arrays (but not hashes) all the way inside.
 The sum is computed in a way that you can safely add floating point numbers,
 even if their magnitudes are very different.  This is done using Neumaier's
 modification of Kahan's summation algorith, described here:
-C<https://en.wikipedia.org/wiki/Kahan_summation_algorithm>.
+L<https://en.wikipedia.org/wiki/Kahan_summation_algorithm>.
 
 =head1 SEE ALSO
 
