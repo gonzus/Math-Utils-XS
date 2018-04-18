@@ -1,3 +1,6 @@
+0.000005    2018-04-18
+            * More fixes for floating point comparisons.
+
 0.000004    2018-04-17
             * Use the C library for floor and ceil.
             * Improve docs.

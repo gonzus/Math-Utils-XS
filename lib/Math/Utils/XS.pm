@@ -6,7 +6,7 @@ use warnings;
 use XSLoader;
 use parent 'Exporter';
 
-our $VERSION = '0.000004';
+our $VERSION = '0.000005';
 XSLoader::load( __PACKAGE__, $VERSION );
 
 our %EXPORT_TAGS = (
@@ -35,7 +35,7 @@ Math::Utils::XS - Some math utility functions implemented in XS
 
 =head1 VERSION
 
-Version 0.000004
+Version 0.000005
 
 =head1 SYNOPSIS
 
