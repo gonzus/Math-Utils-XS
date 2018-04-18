@@ -3,6 +3,7 @@ use warnings;
 
 use Data::Dumper;
 use Test::More;
+use Test::Number::Delta within => 1e-9;
 use Math::Utils::XS q(:utility);
 
 sub test_sign {
@@ -39,7 +40,7 @@ sub test_floor {
         my $num = $case->[0];
         my $expected = $case->[1];
         my $got = floor($num);
-        is($got, $expected, "floor($num) is corect");
+        delta_ok($got, $expected, "floor($num) is corect");
     }
 }
 
@@ -59,7 +60,7 @@ sub test_ceil {
         my $num = $case->[0];
         my $expected = $case->[1];
         my $got = ceil($num);
-        is($got, $expected, "floor($num) is corect");
+        delta_ok($got, $expected, "floor($num) is corect");
     }
 }
 

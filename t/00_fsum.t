@@ -22,20 +22,8 @@ sub test_sum {
         my $sum;
         my $args_xs = $json->encode($args);
 
-        $sum = fsum($args);
-        is($sum, $expected, "sum of $args_xs (arrayref) adds up to $expected");
-
         $sum = fsum(@$args);
         delta_ok($sum, $expected, "sum of $args_xs (expanded) adds up to $expected");
-        next;
-
-        my $foo = 0.0;
-        foreach my $v (@$args) {
-            $foo += $v;
-        }
-        my $got = int(($sum + 0.05) * 100.0) / 100.0;
-        my $exp = int(($foo + 0.05) * 100.0) / 100.0;
-        delta_ok($got, $exp, "$got == $exp");
     }
 }
 
